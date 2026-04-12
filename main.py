@@ -1,6 +1,6 @@
-# Get inputs from user + operator validation
+# Get chosen operator from user + validation
 while True:
-    operators = ["+", "-", "*", "/"]
+    operators = ["+", "-", "*", "/", "%", "**"]
     while True:
         print("What operation would you like to perform?: ")
         operation = input()
@@ -26,7 +26,7 @@ while True:
         except ValueError:
             print("Invalid input, try again")
 
-    # Calculation options
+    # Functions for the calculation options
     def add(first, second):
         return first + second
     def subtract(first, second):
@@ -35,19 +35,25 @@ while True:
         return first * second
     def divide(first, second):
         return first / second
+    def modulo(first, second):
+        return first % second
+    def power(first, second):
+        return first ** second
 
-    # Results
+    # Dictionary to access results via functions
     operations = {"+": add,
                 "-": subtract,
                 "*": multiply,
-                "/": divide}
+                "/": divide,
+                "%": modulo,
+                "**": power}
 
-    # Return results + break or continue
+    # Return results + loop / break the program
     print("Result = ", operations[operation](first, second))
-    print("Would you like to continue? (Y/N): ")
+    print("Would you like to calculate again? (y/n): ")
     loop_status = str(input())
 
-
+    # Option selection + user input validation 
     if loop_status.lower() == "y" or loop_status.lower() == "yes":
         continue
     elif loop_status.lower() == "n" or loop_status.lower() == "no":
