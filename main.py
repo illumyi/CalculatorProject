@@ -51,13 +51,22 @@ while True:
     # Return results + loop / break the program
     print("Result = ", operations[operation](first, second))
     print("Would you like to calculate again? (y/n): ")
-    loop_status = str(input())
 
     # Option selection + user input validation 
-    if loop_status.lower() == "y" or loop_status.lower() == "yes":
-        continue
-    elif loop_status.lower() == "n" or loop_status.lower() == "no":
+    repeat = False
+    while True:
+        loop_status = str(input())
+        if loop_status.lower() == "y" or loop_status.lower() == "yes":
+            repeat = True
+            break
+        elif loop_status.lower() == "n" or loop_status.lower() == "no":
+            repeat = False
+            break
+        else:
+            print("Invalid input, enter yes or no")
+            continue
+
+    if repeat == False:
         break
     else:
-        print("Invalid input, enter yes or no")
-    break
+        continue
